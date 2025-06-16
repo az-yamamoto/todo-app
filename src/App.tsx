@@ -1,9 +1,13 @@
-import { Button } from "@/components/ui/button";
+import { Header } from "./components/atoms/Header";
+import { TodoTemplate } from "./components/templates/todo";
 
 function App() {
 	return (
-		<div className="flex flex-col items-center justify-center min-h-svh">
-			<Button>Click me</Button>
+		<div className="flex flex-col h-screen max-h-screen w-screen">
+			<Header />
+			<main className="flex-1 flex overflow-hidden ">
+				<TodoTemplate />
+			</main>
 		</div>
 	);
 }
