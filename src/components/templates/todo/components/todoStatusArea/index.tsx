@@ -1,4 +1,5 @@
 import type { Todo } from "@/types/types";
+import type React from "react";
 import { TodoBox } from "../todoBox";
 
 type TodoStatusAreaProps = {
@@ -22,17 +23,19 @@ export const TodoStatusArea = ({ status, todos, updateStatus, updateTodo, delete
 	};
 
 	return (
-		<div
+		<section
 			className="p-4 bg-gray-100 border-b w-full overflow-y-auto h-full"
 			onDrop={onDrop}
 			onDragOver={(e) => e.preventDefault()}
 		>
-			<div className="text-lg font-semibold mb-3">{status}</div>
-			<div className="flex flex-col items-center gap-2">
+			<h2 className="text-lg font-semibold mb-3">{status}</h2>
+			<ul className="flex flex-col items-center gap-2">
 				{todos.map((todo) => (
-					<TodoBox key={todo.id} todo={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+					<li key={todo.id} className="w-full" data-testid="todoBox">
+						<TodoBox todo={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+					</li>
 				))}
-			</div>
-		</div>
+			</ul>
+		</section>
 	);
 };
