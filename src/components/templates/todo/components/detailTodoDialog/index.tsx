@@ -28,7 +28,7 @@ export const DetailTodoDialog = ({ todo, isOpen, onOpenChange, onDelete, onUpdat
 	} = useForm<FormValues>({
 		defaultValues: {
 			name: todo.name,
-			detail: todo.details,
+			detail: todo.detail,
 		},
 		mode: "onBlur",
 	});
@@ -46,7 +46,7 @@ export const DetailTodoDialog = ({ todo, isOpen, onOpenChange, onDelete, onUpdat
 		if (isOpen) {
 			reset({
 				name: todo.name,
-				detail: todo.details,
+				detail: todo.detail,
 			});
 		}
 	}, [todo, isOpen, reset]);

@@ -30,7 +30,7 @@ export const TodoTemplate = () => {
 			id: lastId + 1,
 			name,
 			status: "not-started",
-			details: detail,
+			detail: detail,
 		};
 		setTodos((prevTodos) => [...prevTodos, newTodo]);
 		localStorage.setItem(STORAGE_KEY, JSON.stringify([...todos, newTodo]));
@@ -41,7 +41,7 @@ export const TodoTemplate = () => {
 	};
 
 	const updateTodo = (id: number, name: string, detail?: string) => {
-		setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === id ? { ...todo, name, details: detail } : todo)));
+		setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === id ? { ...todo, name, detail: detail } : todo)));
 	};
 
 	const deleteTodo = (id: number) => {
