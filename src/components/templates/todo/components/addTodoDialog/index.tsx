@@ -67,7 +67,7 @@ export const AddTodoDialog = ({ onAdd }: AddTodoDialogProps) => {
 							</div>
 						</div>
 						<DialogFooter>
-							<Button type="submit">Save</Button>
+							<Button type="submit">追加</Button>
 						</DialogFooter>
 					</form>
 				</DialogContent>
