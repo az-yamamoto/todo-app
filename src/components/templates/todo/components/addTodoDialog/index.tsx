@@ -49,7 +49,7 @@ export const AddTodoDialog = ({ onAdd }: AddTodoDialogProps) => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="grid gap-4 py-4">
 							<div className="grid grid-cols-4 items-center gap-4">
-								<Label htmlFor="name" className="text-right">
+								<Label htmlFor="todo_name" className="text-right">
 									Todo Name
 								</Label>
 								<Input
@@ -60,7 +60,7 @@ export const AddTodoDialog = ({ onAdd }: AddTodoDialogProps) => {
 								<p className="text-red-500 col-span-4">{errors.name?.message}</p>
 							</div>
 							<div className="grid grid-cols-4 items-center gap-4">
-								<Label htmlFor="name" className="text-right">
+								<Label htmlFor="todo_detail" className="text-right">
 									Todo Detail
 								</Label>
 								<Input id="todo_detail" className="col-span-3" {...register("detail")} />
