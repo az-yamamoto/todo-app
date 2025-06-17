@@ -32,16 +32,17 @@ export const DetailTodoDialog = ({ todo, isOpen, onOpenChange, onDelete, onUpdat
 		},
 		mode: "onBlur",
 	});
+
 	const onSubmit = (data: FormValues) => {
 		onUpdate(todo.id, data.name, data.detail);
-		reset();
 		onOpenChange(false);
 	};
+
 	const onClickDelete = () => {
 		onDelete(todo.id);
-		reset();
 		onOpenChange(false);
 	};
+
 	useEffect(() => {
 		if (isOpen) {
 			reset({
@@ -50,6 +51,7 @@ export const DetailTodoDialog = ({ todo, isOpen, onOpenChange, onDelete, onUpdat
 			});
 		}
 	}, [todo, isOpen, reset]);
+
 	return (
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>
 			<DialogContent>
