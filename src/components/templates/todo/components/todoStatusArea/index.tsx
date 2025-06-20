@@ -27,6 +27,7 @@ export const TodoStatusArea = ({ status, todos, updateStatus, updateTodo, delete
 			className="p-4 bg-gray-100 border-b w-full overflow-y-auto h-full"
 			onDrop={onDrop}
 			onDragOver={(e) => e.preventDefault()}
+			data-testid={status}
 		>
 			<h2 className="text-lg font-semibold mb-3">{status}</h2>
 			<ul className="flex flex-col items-center gap-2">

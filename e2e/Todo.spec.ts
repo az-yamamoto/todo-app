@@ -108,3 +108,40 @@ test.describe("ローカルストレージに保存されていることの確�
 		expect(updatedTodos.length).toBe(0);
 	});
 });
+
+test.describe("drag & dropの確認", () => {
+	test("Todoのdoingへのドラッグ＆ドロップ", async ({ page }) => {
+		await page.getByRole("button", { name: "test" }).dragTo(page.getByTestId("doing"));
+		await expect(page.getByTestId("doing").getByRole("button", { name: "test" })).toBeVisible();
+		await expect(page.getByTestId("not-started").getByRole("button", { name: "test" })).not.toBeVisible();
+
+		const updatedTodos = await page.evaluate(() => {
+			return JSON.parse(localStorage.getItem("todos") || "[]");
+		});
+		expect(updatedTodos[0].status).toBe("doing");
+	});
+
+	test("Todoのdoneへのドラッグ＆ドロップ", async ({ page }) => {
+		await page.getByRole("button", { name: "test" }).dragTo(page.getByTestId("done"));
+		await expect(page.getByTestId("done").getByRole("button", { name: "test" })).toBeVisible();
+		await expect(page.getByTestId("doing").getByRole("button", { name: "test" })).not.toBeVisible();
+
+		const updatedTodos = await page.evaluate(() => {
+			return JSON.parse(localStorage.getItem("todos") || "[]");
+		});
+		expect(updatedTodos[0].status).toBe("done");
+	});
+
+	test("Todoのnot-startedへのドラッグ＆ドロップ", async ({ page }) => {
+		await page.getByRole("button", { name: "test" }).dragTo(page.getByTestId("doing"));
+
+		await page.getByRole("button", { name: "test" }).dragTo(page.getByTestId("not-started"));
+		await expect(page.getByTestId("not-started").getByRole("button", { name: "test" })).toBeVisible();
+		await expect(page.getByTestId("doing").getByRole("button", { name: "test" })).not.toBeVisible();
+
+		const updatedTodos = await page.evaluate(() => {
+			return JSON.parse(localStorage.getItem("todos") || "[]");
+		});
+		expect(updatedTodos[0].status).toBe("not-started");
+	});
+});
