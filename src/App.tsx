@@ -1,5 +1,5 @@
 import { Header } from "./components/atoms/Header";
-import { TodoTemplate } from "./components/templates/todo";
+import { TodoTemplate } from "./components/templates/Todo";
 
 function App() {
 	return (

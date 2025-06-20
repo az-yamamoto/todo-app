@@ -1,6 +1,6 @@
 import type { Todo } from "@/types/types";
 import type React from "react";
-import { TodoBox } from "../todoBox";
+import { TodoBox } from "../TodoBox";
 
 type TodoStatusAreaProps = {
 	status: "not-started" | "doing" | "done";

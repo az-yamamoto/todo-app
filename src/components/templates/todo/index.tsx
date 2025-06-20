@@ -1,5 +1,5 @@
-import { AddTodoDialog } from "@/components/templates/todo/components/addTodoDialog";
-import { TodoStatusArea } from "@/components/templates/todo/components/todoStatusArea";
+import { AddTodoDialog } from "@/components/templates/Todo/components/AddTodoDialog";
+import { TodoStatusArea } from "@/components/templates/Todo/components/todoStatusArea";
 import type { Todo } from "@/types/types";
 import { useEffect, useState } from "react";
 

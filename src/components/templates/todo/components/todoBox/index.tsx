@@ -1,6 +1,6 @@
 import type { Todo } from "@/types/types";
 import { useState } from "react";
-import { DetailTodoDialog } from "../detailTodoDialog";
+import { DetailTodoDialog } from "../DetailTodoDialog";
 
 type TodoBoxProps = {
 	todo: Todo;
