@@ -1,7 +1,7 @@
-import { AddTodoDialog } from "@/components/templates/Todo/components/AddTodoDialog";
-import { TodoStatusArea } from "@/components/templates/Todo/components/todoStatusArea";
 import type { Todo } from "@/types/types";
 import { useEffect, useState } from "react";
+import { AddTodoDialog } from "./components/AddTodoDialog";
+import { TodoStatusArea } from "./components/TodoStatusArea";
 
 const STORAGE_KEY = "todos";
 

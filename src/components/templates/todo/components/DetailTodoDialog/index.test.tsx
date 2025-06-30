@@ -2,7 +2,7 @@ import type { Todo } from "@/types/types";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
-import { DetailTodoDialog } from "./index";
+import { DetailTodoDialog } from ".";
 
 describe("DetailTodoDialog描画", () => {
 	test("初期値確認", async () => {
