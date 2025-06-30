@@ -15,6 +15,7 @@ export default defineConfig({
 		globals: true,
 		environment: "jsdom",
 		setupFiles: "./src/setupTests.ts",
+		exclude: ["node_modules/**", "**/e2e/**", "**/*.spec.ts"],
 	},
 	base: "/todo-app/",
 });
