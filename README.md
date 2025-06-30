@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+## 技術選定理由
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+本 Todo アプリでは、以下の技術を採用しています。
 
-Currently, two official plugins are available:
+### フロントエンド
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### React
 
-## Expanding the ESLint configuration
+#### shadcn/ui
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Tailwind CSS ベースで、洗練された UI コンポーネントがすぐに使える。
+- 高いカスタマイズ性と一貫したデザインが実現できる。
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### React Hook Form
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 軽量かつパフォーマンスに優れたフォームライブラリ。
+- フォームの状態管理やバリデーションが直感的に実装可能。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### テスト
+
+#### Unit テスト: Vitest + Testing Library
+
+- **Vitest**
+
+  - Vite との親和性が高く、高速なテスト実行が可能。
+
+- **Testing Library**
+  - DOM の実際の使われ方に近い形でテストを書くことができ、ユーザー視点のテストが可能。
+  - アクセシビリティや UI の動作にフォーカスした設計が可能。
+
+#### E2E テスト: Playwright
+
+- Chromium / Firefox / WebKit をサポートし、クロスブラウザテストが可能。
+- 画面操作を正確に自動化でき、実ユーザーの操作に近いテストが実現可能。
+- スクリーンショット撮影や動画記録など、デバッグに役立つ機能が豊富。
+
+---
+
+## コーディング規約
+
+- 自動フォーマッタとリントでスタイル統一を行う（`biome`）。
+
+### フォルダ構成
+
+- Atomic Design をベースにしたコンポーネント設計。
+- コンポーネント・ページ・hooks・utils などの関心ごとにディレクトリを分ける。
