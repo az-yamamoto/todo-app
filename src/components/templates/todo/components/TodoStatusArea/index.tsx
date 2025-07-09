@@ -1,5 +1,5 @@
 import type { Todo } from "@/types/types";
-import type React from "react";
+import { useTodoDrop } from "@/hooks/useTodoDnD";
 import { TodoBox } from "../TodoBox";
 
 type TodoStatusAreaProps = {
@@ -11,22 +11,12 @@ type TodoStatusAreaProps = {
 };
 
 export const TodoStatusArea = ({ status, todos, updateStatus, updateTodo, deleteTodo }: TodoStatusAreaProps) => {
-	const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
-		const id = Number.parseInt(e.dataTransfer.getData("text/plain"));
-		const newStatus = status;
-		if (Number.isNaN(id)) {
-			return;
-		}
-		updateStatus(id, newStatus);
-		e.preventDefault();
-		e.stopPropagation();
-	};
+	const { dropZoneProps } = useTodoDrop(status, updateStatus);
 
 	return (
 		<section
 			className="p-4 bg-gray-100 border-b w-full overflow-y-auto h-full"
-			onDrop={onDrop}
-			onDragOver={(e) => e.preventDefault()}
+			{...dropZoneProps}
 			data-testid={status}
 		>
 			<h2 className="text-lg font-semibold mb-3">{status}</h2>
